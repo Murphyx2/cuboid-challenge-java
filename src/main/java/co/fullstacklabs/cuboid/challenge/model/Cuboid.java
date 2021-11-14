@@ -35,6 +35,6 @@ public class Cuboid {
     
     
     public Double getVolume(){
-        return (double) width * height * depth;
+        return (double)  width * height * depth;
     }
 }
