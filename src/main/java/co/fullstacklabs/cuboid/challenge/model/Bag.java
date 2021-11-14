@@ -35,6 +35,12 @@ public class Bag {
     @Setter(AccessLevel.PRIVATE)
     private List<Cuboid> cuboids = new ArrayList<>();
 
+    @Transient
+    private Double payloadVolume;
+    @Transient
+    private Double availableVolume;
+    
+    
     public Bag(String title, double volume) {
         this.setVolume(volume);
         this.setTitle(title);
@@ -51,5 +57,17 @@ public class Bag {
 
     public void addCuboid(Cuboid cuboid) {
         cuboids.add(cuboid);
+    }
+    
+    public Double getPayloadVolume(){
+        payloadVolume = 0D;
+        for(Cuboid cuboid: cuboids){
+            payloadVolume+=cuboid.getVolume();
+        }
+        return payloadVolume;
+    }
+    
+    public Double getAvailableVolume(){        
+        return volume - getPayloadVolume();
     }
 }

@@ -41,7 +41,7 @@ class CuboidServiceTest {
     private ModelMapper mapper;
 
     @Test
-    void updateWithSuccess() {
+    void updateWithSuccess() {                                
         assertTrue(true);
     }
 
