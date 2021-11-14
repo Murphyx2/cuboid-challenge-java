@@ -2,6 +2,7 @@ package co.fullstacklabs.cuboid.challenge.controller;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -37,11 +38,17 @@ class CuboidControllerTest {
 
     @Test
     void shouldUpdateCuboid() throws Exception {
-        assertTrue(true);
+        CuboidDTO cuboidDTO = CuboidDTO.builder()
+                .width(2f).height(2f).depth(2f).bagId(2L).build();
+
+        this.mockMvc.perform(put(PATH).contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(cuboidDTO)))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON));
     }
 
     @Test
-    void invalidInputInUpdateShouldReturnError() throws Exception {
+    void invalidInputInUpdateShouldReturnError() throws Exception {        
         assertTrue(true);
     }
 

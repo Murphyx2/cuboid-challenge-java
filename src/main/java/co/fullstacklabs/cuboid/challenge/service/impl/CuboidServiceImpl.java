@@ -74,6 +74,10 @@ public class CuboidServiceImpl implements CuboidService {
         return bagRepository.findById(bagId).orElseThrow(() -> new ResourceNotFoundException("Bag not found"));
     }
 
-
+    @Override
+    @Transactional
+    public CuboidDTO update(CuboidDTO cuboid){
+        return cuboid;
+    }
   
 }
